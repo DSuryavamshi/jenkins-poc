@@ -3,7 +3,7 @@ remote.name = "node-1"
 remote.host = "3.128.198.19"
 remote.allowAnyHosts = true
 
-node {
+node ('master'){
     withCredentials([sshUserPrivateKey(credentialsId: '3.128.198.19', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity
