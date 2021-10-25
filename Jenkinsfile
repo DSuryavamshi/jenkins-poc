@@ -7,6 +7,10 @@ node {
     withCredentials([sshUserPrivateKey(credentialsId: '3.128.198.19', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity
+        stage("Build and Test") {
+            properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])])
+            sh "echo \"Trigger Successful\""
+        }
         stage("SSHing to Airflow Server") {
             sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!\""           
         }
