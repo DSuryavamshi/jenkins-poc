@@ -11,12 +11,10 @@ node {
             sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful\""           
         }
         stage("Pulling Changes"){
-            sshCommand remote: remote, command: "cd /home/ubuntu/jenkins-poc/"
-            sshCommand remote: remote, command: "git pull"
+            sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
         }
         stage("Executing Ariflow Commands"){
-            sshCommand remote: remote, command: "cd /home/ubuntu/jenkins-poc/Airflow-Folder/"
-            sshCommand remote: remote, command: "python3 helloworld-test.py"
+            sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/Airflow-Folder/helloworld-test.py"
         }
     }
 }
