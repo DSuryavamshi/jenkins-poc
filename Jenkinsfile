@@ -7,9 +7,14 @@ node {
     withCredentials([sshUserPrivateKey(credentialsId: '3.128.198.19', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity
-        stage("SSH Steps Rocks!") {
+        stage("SSHing to Airflow Server") {
+            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful\""           
+        }
+        stage("Pulling Changes"){
             sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
-            sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/helloworld.py"
+        }
+        stage("Executing Ariflow Commands"){
+            sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/Airflow-Folder/helloworld.py"
         }
     }
 }
