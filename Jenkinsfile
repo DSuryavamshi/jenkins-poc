@@ -8,7 +8,7 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSHing to Airflow Server") {
-            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!!\""           
+            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!\""           
         }
         stage("Pulling Changes"){
             sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
