@@ -4,7 +4,7 @@ pipeline {
         stage('sshing') { 
             steps {
                 sshagent (credentials: ['3.128.198.19']) {
-                    sh 'pwd'
+                    sh 'hostname -I'
                 }
             }
         }
