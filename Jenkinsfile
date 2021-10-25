@@ -8,10 +8,8 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            sshCommand remote: remote, command: "cd /home/ubuntu/jenkins-poc/"
-            sshCommand remote: remote, command: "pwd"
-            sshCommand remote: remote, command: "git pull"
-            sshCommand remote: remote, command: "python3 helloworld.py"
+            sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
+            sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/helloworld.py"
         }
     }
 }
