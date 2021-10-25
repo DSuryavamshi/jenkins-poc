@@ -15,7 +15,6 @@ node {
         }
         stage("Executing Ariflow Commands"){
             sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/Airflow-Folder/helloworld-test.py"
-            sshCommand remote: remote, command: "touch new_file.txt"
             sshCommand remote: remote, command: "echo \"Process Complete.\""
         }
     }
