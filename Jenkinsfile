@@ -15,7 +15,7 @@ node {
         }
         stage("Executing Ariflow Commands"){
             sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/Airflow-Folder/helloworld-test.py"
-            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful\""
+            sshCommand remote: remote, command: "echo \"Process Complete\""
         }
     }
 }
