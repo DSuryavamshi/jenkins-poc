@@ -12,7 +12,10 @@ node ('master'){
             sh "echo \"Trigger Successful\""
         }
         stage("SSHing to Airflow Server") {
-            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!\""           
+            sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!\""     
+            sshCommand remote: remote, command: "cd /home/ubuntu/jenkins-poc/ ; bash --login"
+            sshCommand remote: remote, command: "pwd"
+               
         }
         stage("Pulling Changes"){
             sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
