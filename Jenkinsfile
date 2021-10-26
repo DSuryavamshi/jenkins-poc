@@ -16,7 +16,7 @@ node ('master'){
             sshCommand remote: remote, command: """#!/bin/bash
             cd /home/ubuntu/jenkins-poc/
             python3 Airflow-Folder/helloworld-test.py"""
-            sshCommand remote: remote, command: "echo \"Process Complete.\""
+            sshCommand remote: remote, command: "echo \"Process Complete!\""
         }
     }
 }
