@@ -18,7 +18,8 @@ node ('master'){
             pwd"""
         }
         stage("Pulling Changes"){
-            sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
+            // sshCommand remote: remote, command: "git -C /home/ubuntu/jenkins-poc/ pull"
+            sshCommand remote: remote, command: "git pull"
         }
         stage("Executing Ariflow Commands"){
             sshCommand remote: remote, command: "python3 /home/ubuntu/jenkins-poc/Airflow-Folder/helloworld-test.py"
