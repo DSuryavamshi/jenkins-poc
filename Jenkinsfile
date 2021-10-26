@@ -13,7 +13,9 @@ node ('master'){
         }
         stage("SSHing to Airflow Server") {
             sshCommand remote: remote, command: "echo \"SSH into Airflow Server Successful!!\""     
-            sshCommand remote: remote, command: "pwd", path: "/home/ubuntu/jenkins-poc/"
+            sshCommand remote: remote, command: """#!/bin/bash
+            cd /home/ubuntu/jenkins-poc/
+            pwd""",
                
         }
         stage("Pulling Changes"){
